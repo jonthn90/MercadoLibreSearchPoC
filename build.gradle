@@ -49,9 +49,9 @@ allprojects {
 
         libs = [
                 okhttpLoginInterceptor: 'com.squareup.okhttp3:logging-interceptor:4.2.1',
-                retrofit              : 'com.squareup.retrofit2:retrofit:2.7.2',
-                retrofitGsonConverter : 'com.squareup.retrofit2:converter-gson:2.7.2',
-                koin                  : "org.koin:koin-androidx-viewmodel:2.2.2"
+                retrofit              : 'com.squareup.retrofit2:retrofit:2.9.0',
+                retrofitMoshiConverter: 'com.squareup.retrofit2:converter-moshi:2.9.0',
+                koin                  : "org.koin:koin-androidx-viewmodel:2.1.5"
         ]
 
         testLibs = [
@@ -64,7 +64,7 @@ allprojects {
 
         androidxTestLibs = [
                 archCoreTesting: 'androidx.arch.core:core-testing:2.1.0',
-                espressoX: 'androidx.test.espresso:espresso-core:3.3.0'
+                espressoX      : 'androidx.test.espresso:espresso-core:3.3.0'
         ]
 
         androidTestLibs = [

@@ -1,2 +1,6 @@
+include ':testshared'
+include ':usescases'
+include ':domain'
+include ':data'
 include ':app'
 rootProject.name = "Mercado Libre Search"
