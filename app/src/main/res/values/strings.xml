@@ -5,4 +5,6 @@
     <string name="search_hint">¿Qué estas buscando?</string>
     <string name="search">Buscar</string>
     <string name="search_error">Debes escribir algo para buscar</string>
+    <string name="search_empty">Lo sentimos, no encontramos resultados para tu busqueda :(\n\nPor favor intenta con otro producto</string>
+    <string name="no_internet">Verifica tu conexión a Internet</string>
 </resources>

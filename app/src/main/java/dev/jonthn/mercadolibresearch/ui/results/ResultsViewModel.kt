@@ -22,6 +22,10 @@ class ResultsViewModel(private val textSearch: String, private val searchItems: 
     private val _navigateToItem = MutableLiveData<Event<String>>()
     val navigateToItem: LiveData<Event<String>> get() = _navigateToItem
 
+    private val _empty = MutableLiveData<Boolean>()
+    val empty: LiveData<Boolean> get() = _empty
+
+
     init {
         fetchData()
     }
@@ -31,6 +35,7 @@ class ResultsViewModel(private val textSearch: String, private val searchItems: 
 
             _loading.value = true
             _itemsSearch.value = searchItems.invoke(textSearch.trim().replace(" ", "%20"))
+            _empty.value = _itemsSearch.value.isNullOrEmpty()
             _loading.value = false
 
             Timber.d("""++++++++++++++++++++++++++++++++++++ ${_itemsSearch.value?.toString()}""")

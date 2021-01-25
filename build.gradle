@@ -16,6 +16,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
     }
 
     ext {
@@ -33,7 +36,8 @@ allprojects {
                 dexter              : 'com.karumi:dexter:6.2.2',
                 navigation          : 'androidx.navigation:navigation-fragment-ktx:2.3.2',
                 navigationUI        : 'androidx.navigation:navigation-ui-ktx:2.3.2',
-                timber              : 'com.jakewharton.timber:timber:4.7.1'
+                timber              : 'com.jakewharton.timber:timber:4.7.1',
+                network             : 'com.github.stealthcopter:AndroidNetworkTools:0.4.5.3'
         ]
 
         androidKaptLibs = [

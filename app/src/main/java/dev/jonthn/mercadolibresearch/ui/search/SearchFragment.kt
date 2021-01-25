@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import dev.jonthn.mercadolibresearch.R
 import dev.jonthn.mercadolibresearch.SwissTool
 import dev.jonthn.mercadolibresearch.databinding.FragmentSearchBinding
+import dev.jonthn.mercadolibresearch.ui.MainActivity
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 
@@ -56,18 +58,24 @@ class SearchFragment : Fragment() {
 
     private fun performSearch() {
 
-        if (viewModel.isEmptySearch()) {
-            binding.textInputLayout.apply {
-                error = context.getString(R.string.search_error)
+        if(MainActivity.isInternet) {
+
+            if (viewModel.isEmptySearch()) {
+                binding.textInputLayout.apply {
+                    error = context.getString(R.string.search_error)
+                }
+            } else {
+                val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
+                    viewModel.textSearch.value!!
+                )
+
+                SwissTool.hideKeyboard(requireActivity())
+
+                navController.navigate(action)
             }
         } else {
-            val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
-                viewModel.textSearch.value!!
-            )
 
-            SwissTool.hideKeyboard(requireActivity())
-
-            navController.navigate(action)
+            Toast.makeText(requireContext(), getString(R.string.no_internet), Toast.LENGTH_LONG).show()
         }
     }
 }
