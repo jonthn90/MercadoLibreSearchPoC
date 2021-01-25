@@ -1,4 +1,8 @@
 package dev.jonthn.usescases
 
-class SearchItems {
+import dev.jonthn.data.repository.ItemsSearchRepository
+import dev.jonthn.domain.ItemSearch
+
+class SearchItems(private val itemsSearchRepository: ItemsSearchRepository) {
+    suspend fun invoke(textSearch: String): List<ItemSearch> = itemsSearchRepository.searchItems(textSearch)
 }

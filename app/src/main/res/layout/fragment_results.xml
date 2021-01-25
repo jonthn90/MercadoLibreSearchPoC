@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="dev.jonthn.mercadolibresearch.ui.results.ResultsViewModel" />
@@ -12,14 +13,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/yellow_ml"
         tools:context=".ui.results.ResultsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:items="@{viewmodel.itemsSearch}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/view_product" />
+            tools:listitem="@layout/view_item_search" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -32,7 +35,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/recycler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{viewmodel.loading}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

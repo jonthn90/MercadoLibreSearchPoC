@@ -33,8 +33,7 @@ allprojects {
                 dexter              : 'com.karumi:dexter:6.2.2',
                 navigation          : 'androidx.navigation:navigation-fragment-ktx:2.3.2',
                 navigationUI        : 'androidx.navigation:navigation-ui-ktx:2.3.2',
-                timber              : 'com.jakewharton.timber:timber:4.7.1',
-                coil                : 'io.coil-kt:coil:1.1.1'
+                timber              : 'com.jakewharton.timber:timber:4.7.1'
         ]
 
         androidKaptLibs = [

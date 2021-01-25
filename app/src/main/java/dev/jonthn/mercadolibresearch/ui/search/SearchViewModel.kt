@@ -13,6 +13,10 @@ class SearchViewModel : ViewModel() {
         it.isNullOrEmpty()
     }
 
+    init {
+        textSearch.value = "Motorola g6"
+    }
+
     fun isEmptySearch(): Boolean {
         return (textSearch.value.isNullOrEmpty())
     }

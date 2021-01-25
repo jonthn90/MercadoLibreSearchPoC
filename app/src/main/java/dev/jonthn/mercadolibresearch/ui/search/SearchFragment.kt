@@ -15,7 +15,6 @@ import dev.jonthn.mercadolibresearch.databinding.FragmentSearchBinding
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 
-
 class SearchFragment : Fragment() {
 
     private val viewModel: SearchViewModel by lifecycleScope.viewModel(this)
