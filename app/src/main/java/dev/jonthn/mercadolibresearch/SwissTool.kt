@@ -11,7 +11,7 @@ object SwissTool {
             activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         try {
             inputManager.hideSoftInputFromWindow(
-                activity.currentFocus!!.windowToken,
+                activity.currentFocus?.windowToken,
                 InputMethodManager.RESULT_UNCHANGED_SHOWN
             )
         } catch (e: Exception) {

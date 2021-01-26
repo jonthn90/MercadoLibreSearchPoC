@@ -8,5 +8,10 @@ interface APIService {
     @GET("/sites/MLM/search?")
     suspend fun searchItems(
         @Query("q") textSearch: String
-    ): APIResponse
+    ): APIResponseSearch
+
+    @GET("/items?")
+    suspend fun getItem(
+        @Query("ids") idItem: String
+    ): List<APIResponseItem>
 }

@@ -9,7 +9,6 @@ import dev.jonthn.domain.ItemSearch
 import dev.jonthn.mercadolibresearch.ui.common.loadUrl
 import dev.jonthn.mercadolibresearch.ui.results.ResultsAdapter
 import java.text.NumberFormat
-import java.util.*
 
 @BindingAdapter("urlCover")
 fun ImageView.bindUrlCover(url: String?) {
@@ -38,4 +37,12 @@ fun RecyclerView.setItems(movies: List<ItemSearch>?) {
 @BindingAdapter("price")
 fun MaterialTextView.setPrice(price: Double) {
     text = NumberFormat.getCurrencyInstance().format(price);
+}
+
+@BindingAdapter("shipping")
+fun MaterialTextView.setshipping(isFree: Boolean) {
+    text = if (isFree)
+        "Envio gratuito"
+    else
+        "Más costo de envio"
 }

@@ -11,6 +11,7 @@ import dev.jonthn.mercadolibresearch.ui.results.ResultsFragment
 import dev.jonthn.mercadolibresearch.ui.results.ResultsViewModel
 import dev.jonthn.mercadolibresearch.ui.search.SearchFragment
 import dev.jonthn.mercadolibresearch.ui.search.SearchViewModel
+import dev.jonthn.usescases.GetItem
 import dev.jonthn.usescases.SearchItems
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -48,6 +49,7 @@ private val scopesModule = module {
     }
 
     scope(named<DetailFragment>()) {
-        viewModel { (idItem: String) -> DetailViewModel(idItem) }
+        viewModel { (idItem: String) -> DetailViewModel(idItem, get()) }
+        scoped { GetItem(get()) }
     }
 }

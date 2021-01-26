@@ -33,6 +33,7 @@ allprojects {
                 material            : 'com.google.android.material:material:1.2.1',
                 roomRuntime         : 'androidx.room:room-runtime:2.2.4',
                 glide               : 'com.github.bumptech.glide:glide:4.11.0',
+                glideSlider         : 'com.github.firdausmaulan:GlideSlider:1.5.1',
                 dexter              : 'com.karumi:dexter:6.2.2',
                 navigation          : 'androidx.navigation:navigation-fragment-ktx:2.3.2',
                 navigationUI        : 'androidx.navigation:navigation-ui-ktx:2.3.2',

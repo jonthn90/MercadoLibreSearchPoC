@@ -7,19 +7,19 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class API {
 
+    val baseURL = "https://api.mercadolibre.com/"
+
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder().addInterceptor(this).build()
     }
 
     val service: APIService = Retrofit.Builder()
-        .baseUrl("https://api.mercadolibre.com/")
+        .baseUrl(baseURL)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
         .run {
-            create<APIService>(
-                APIService::class.java
-            )
+            create<APIService>(APIService::class.java)
         }
 }

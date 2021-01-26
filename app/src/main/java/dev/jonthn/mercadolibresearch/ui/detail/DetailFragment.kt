@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.request.RequestOptions
+import com.glide.slider.library.slidertypes.DefaultSliderView
 import dev.jonthn.mercadolibresearch.databinding.FragmentDetailBinding
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
@@ -36,7 +38,27 @@ class DetailFragment : Fragment() {
             lifecycleOwner = this@DetailFragment
         }
 
-        Toast.makeText(requireContext(), args.idItem, Toast.LENGTH_LONG).show()
+        viewModel.item.observe(viewLifecycleOwner, Observer {
+            setURLS()
+        })
     }
 
+    private fun setURLS() {
+
+        viewModel.item.value?.body?.pictures?.forEach { picture ->
+            binding?.slider?.addSlider(DefaultSliderView(requireContext()).apply {
+                image(picture.secure_url)
+                setRequestOption(RequestOptions().fitCenter())
+                setProgressBarVisible(true)
+            })
+        }
+
+        binding?.slider?.apply {
+            setCustomIndicator(binding?.customIndicator)
+            setDuration(4000)
+            stopCyclingWhenTouch(true)
+            currentPosition = if (viewModel.item.value?.body?.pictures?.size == 1) 0 else 1
+
+        }
+    }
 }

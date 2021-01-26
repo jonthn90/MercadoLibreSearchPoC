@@ -16,23 +16,45 @@
         android:background="@color/white"
         tools:context=".ui.detail.DetailFragment">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_thumbnail"
+        <com.glide.slider.library.SliderLayout
+            android:id="@+id/slider"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="300dp"
             android:layout_margin="16dp"
+            app:indicator_visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.glide.slider.library.indicators.PagerIndicator
+            android:id="@+id/custom_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:selected_color="@color/blue_ml"
+            app:selected_height="4dp"
+            app:selected_padding_left="2dp"
+            app:selected_padding_right="2dp"
+            app:selected_width="16dp"
+            app:shape="rect"
+            app:unselected_color="#55333333"
+            app:unselected_height="2dp"
+            app:unselected_padding_left="2dp"
+            app:unselected_padding_right="2dp"
+            app:unselected_width="16dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:text="@{viewmodel.item.body.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_thumbnail"
+            app:layout_constraintTop_toBottomOf="@+id/slider"
             tools:text="Title" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -40,6 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:text="@{viewmodel.item.body.condition}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_title"
@@ -53,6 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_condition"
+            app:price="@{viewmodel.item.body.price}"
             tools:text="Title" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -63,6 +87,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_price"
+            app:shipping="@{viewmodel.item.body.shipping.free_shipping}"
             tools:text="Title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

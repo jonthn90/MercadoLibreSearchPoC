@@ -65,11 +65,12 @@ class SearchFragment : Fragment() {
                     error = context.getString(R.string.search_error)
                 }
             } else {
+
+                SwissTool.hideKeyboard(requireActivity())
+
                 val action = SearchFragmentDirections.actionSearchFragmentToResultsFragment(
                     viewModel.textSearch.value!!
                 )
-
-                SwissTool.hideKeyboard(requireActivity())
 
                 navController.navigate(action)
             }

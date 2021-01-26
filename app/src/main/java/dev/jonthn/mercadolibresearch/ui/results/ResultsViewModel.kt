@@ -25,7 +25,6 @@ class ResultsViewModel(private val textSearch: String, private val searchItems: 
     private val _empty = MutableLiveData<Boolean>()
     val empty: LiveData<Boolean> get() = _empty
 
-
     init {
         fetchData()
     }
