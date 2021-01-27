@@ -15,8 +15,6 @@ data class Body(
     val price: Double,
     val shipping: Shipping,
     val sold_quantity: Int,
-    val status: String?,
-    val stop_time: String?,
     val thumbnail: String?,
     val title: String?,
     val warranty: String?

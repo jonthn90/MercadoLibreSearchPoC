@@ -25,8 +25,6 @@ fun ServerItem.toDomainItem(): DomainItem =
             body.price,
             Shipping(body.shipping.free_shipping, body.shipping.store_pick_up),
             body.sold_quantity,
-            body.status,
-            body.stop_time,
             body.thumbnail,
             body.title,
             body.warranty ?: notDefined
