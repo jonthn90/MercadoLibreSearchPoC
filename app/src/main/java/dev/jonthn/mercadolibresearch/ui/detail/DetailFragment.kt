@@ -1,5 +1,7 @@
 package dev.jonthn.mercadolibresearch.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +12,11 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.request.RequestOptions
 import com.glide.slider.library.slidertypes.DefaultSliderView
 import dev.jonthn.mercadolibresearch.databinding.FragmentDetailBinding
+import dev.jonthn.mercadolibresearch.ui.setVisible
 import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.viewmodel.scope.viewModel
 import org.koin.core.parameter.parametersOf
+
 
 class DetailFragment : Fragment() {
 
@@ -41,24 +45,37 @@ class DetailFragment : Fragment() {
         viewModel.item.observe(viewLifecycleOwner, Observer {
             setURLS()
         })
+
+
+        binding?.imageButton?.setOnClickListener {
+            val browserIntent =
+                Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.item.value?.body?.permalink))
+            startActivity(browserIntent)
+        }
     }
 
     private fun setURLS() {
 
-        viewModel.item.value?.body?.pictures?.forEach { picture ->
-            binding?.slider?.addSlider(DefaultSliderView(requireContext()).apply {
-                image(picture.secure_url)
-                setRequestOption(RequestOptions().fitCenter())
-                setProgressBarVisible(true)
-            })
-        }
+        val urls = viewModel.item.value?.body?.pictures
 
-        binding?.slider?.apply {
-            setCustomIndicator(binding?.customIndicator)
-            setDuration(4000)
-            stopCyclingWhenTouch(true)
-            currentPosition = if (viewModel.item.value?.body?.pictures?.size == 1) 0 else 1
+        if (urls.isNullOrEmpty()) {
+            binding?.slider?.setVisible(false)
+        } else {
+            urls.forEach { picture ->
+                binding?.slider?.addSlider(DefaultSliderView(requireContext()).apply {
+                    image(picture.secure_url)
+                    setRequestOption(RequestOptions().fitCenter())
+                    setProgressBarVisible(true)
+                })
+            }
 
+            binding?.slider?.apply {
+                setCustomIndicator(binding?.customIndicator)
+                setDuration(4000)
+                stopCyclingWhenTouch(true)
+                currentPosition = if (viewModel.item.value?.body?.pictures?.size == 1) 0 else 1
+
+            }
         }
     }
 }

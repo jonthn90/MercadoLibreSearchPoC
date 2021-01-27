@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import dev.jonthn.domain.Item
 import dev.jonthn.usescases.GetItem
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class DetailViewModel(private val idItem: String, private val getItem: GetItem) : ViewModel() {
 
@@ -17,18 +16,19 @@ class DetailViewModel(private val idItem: String, private val getItem: GetItem) 
     private val _item = MutableLiveData<Item>()
     val item: LiveData<Item> get() = _item
 
+    private val _empty = MutableLiveData<Boolean>()
+    val empty: LiveData<Boolean> get() = _empty
+
     init {
         fetchData()
     }
 
     private fun fetchData() {
         viewModelScope.launch {
-
             _loading.value = true
             _item.value = getItem.invoke(idItem)
+            _empty.value = _item.value == null
             _loading.value = false
-
-            Timber.d("""++++++++++++++++++++++++++++++++++++ ${_item.value?.toString()}""")
         }
     }
 }

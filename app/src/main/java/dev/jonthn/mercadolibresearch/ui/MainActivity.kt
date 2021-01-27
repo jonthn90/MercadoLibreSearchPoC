@@ -2,6 +2,7 @@ package dev.jonthn.mercadolibresearch.ui
 
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.stealthcopter.networktools.Ping
@@ -43,10 +44,15 @@ class MainActivity : AppCompatActivity() {
                 override fun onResult(pingResult: PingResult?) {
                     isInternet = isConnected && pingResult!!.isReachable
 
-                    Timber.d("+++++++++++++++++++++++++++++++++Internet $isInternet")
+                    Timber.d("Internet $isInternet")
                 }
 
                 override fun onFinished(pingStats: PingStats?) {
+                    this@MainActivity.runOnUiThread(Runnable {
+                        if (!isInternet)
+                            Toast.makeText(this@MainActivity, "Sin Internet", Toast.LENGTH_LONG)
+                                .show()
+                    })
                 }
 
                 override fun onError(e: java.lang.Exception?) {

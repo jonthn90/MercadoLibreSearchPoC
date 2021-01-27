@@ -8,6 +8,8 @@ import dev.jonthn.domain.ItemSearch as DomainItemSearch
 import dev.jonthn.mercadolibresearch.data.server.APIResponseItem as ServerItem
 import dev.jonthn.domain.Item as DomainItem
 
+const val notDefined = "No definido"
+
 fun ServerItemSearch.toDomainItemSearch(): DomainItemSearch =
     DomainItemSearch(id, permalink, price, thumbnail, title)
 
@@ -16,7 +18,8 @@ fun ServerItem.toDomainItem(): DomainItem =
         Body(
             body.accepts_mercadopago,
             body.available_quantity,
-            body.condition,
+            body.condition ?: notDefined,
+            body.id,
             body.permalink,
             body.pictures.map { Picture(it.secure_url) },
             body.price,
@@ -26,6 +29,6 @@ fun ServerItem.toDomainItem(): DomainItem =
             body.stop_time,
             body.thumbnail,
             body.title,
-            body.warranty
+            body.warranty ?: notDefined
         ), code
     )

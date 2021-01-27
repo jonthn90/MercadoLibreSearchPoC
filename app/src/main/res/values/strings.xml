@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">Mercado Libre Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_hint">¿Qué estas buscando?</string>
     <string name="search">Buscar</string>
     <string name="search_error">Debes escribir algo para buscar</string>
     <string name="search_empty">Lo sentimos, no encontramos resultados para tu busqueda :(\n\nPor favor intenta con otro producto</string>
+    <string name="item_empty">Lo sentimos, no encontramos detalles del producto :(\n\nPor favor intenta con otro producto</string>
     <string name="no_internet">Verifica tu conexión a Internet</string>
+    <string name="see_on_meli">Da clic para verlo en Mercado Libre </string>
+    <string name="free_shipping">Envio gratuito</string>
+    <string name="not_free_shipping">Más costo de envio</string>
+    <string name="new_item">Nuevo</string>
+    <string name="used">Usado</string>
+    <string name="accepts_mercado_pago">Acepta Mercado Pago</string>
+    <string name="not_accepts_mercado_pago">No acepta Mercado Pago</string>
+    <string name="not_available">Sin disponibilidad</string>
+    <string name="one_available">¡Solo queda uno!</string>
+    <string name="not_sold">Aún no se ha vendido este producto</string>
 </resources>

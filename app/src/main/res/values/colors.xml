@@ -13,4 +13,5 @@
     <color name="secondaryDarkColor">#00006e</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#ffffff</color>
+    <color name="indigo_700">#303F9F</color>
 </resources>

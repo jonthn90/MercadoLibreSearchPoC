@@ -14,7 +14,7 @@ class SearchViewModel : ViewModel() {
     }
 
     init {
-        textSearch.value = "Motorola g6"
+        textSearch.value = "nintendo switch"
     }
 
     fun isEmptySearch(): Boolean {

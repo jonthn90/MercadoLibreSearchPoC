@@ -8,7 +8,6 @@ import dev.jonthn.domain.ItemSearch
 import dev.jonthn.mercadolibresearch.ui.common.Event
 import dev.jonthn.usescases.SearchItems
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class ResultsViewModel(private val textSearch: String, private val searchItems: SearchItems) :
     ViewModel() {
@@ -31,13 +30,10 @@ class ResultsViewModel(private val textSearch: String, private val searchItems: 
 
     private fun fetchData() {
         viewModelScope.launch {
-
             _loading.value = true
             _itemsSearch.value = searchItems.invoke(textSearch.trim().replace(" ", "%20"))
             _empty.value = _itemsSearch.value.isNullOrEmpty()
             _loading.value = false
-
-            Timber.d("""++++++++++++++++++++++++++++++++++++ ${_itemsSearch.value?.toString()}""")
         }
     }
 
